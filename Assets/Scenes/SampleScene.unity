@@ -621,6 +621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 837371019}
+  - component: {fileID: 837371020}
   m_Layer: 0
   m_Name: PlayerBubble
   m_TagString: Untagged
@@ -644,6 +645,21 @@ Transform:
   - {fileID: 1699500079}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &837371020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837371018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b4520b6b3a184a9c1a5f206a96bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &884884304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,7 +2024,7 @@ GameObject:
   - component: {fileID: 1369529260}
   - component: {fileID: 1369529259}
   - component: {fileID: 1369529258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
