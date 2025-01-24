@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BigSpike
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: -756927323, guid: 40d8ad67eb8672d419d3816ed0bdd32f, type: 3}
-  m_DefaultGameObject: {fileID: 919132149155446097, guid: 39fc725199403c342958f81e28191cd4, type: 3}
+  m_DefaultGameObject: {fileID: 1467889322484194227, guid: 77c2d8754aebda541b77ffac567eabaf, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules: []
