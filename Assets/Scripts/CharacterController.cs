@@ -13,16 +13,25 @@ public class CharacterController : Bubble
     [SerializeField] private float pushRange = 5f;
     [SerializeField] private AnimationCurve forceFalloff;
     [SerializeField] private LayerMask groundMask;
-    [SerializeField] private Transform modelChildTransform;
+    [Space]
+    [SerializeField] private Transform modelRootTrs;
+    [SerializeField] private Transform modelTrs;
 
+    [SerializeField] private BlowEmitter blowEmitter;
+
+    
     private Camera _mainCamera;
     private Rigidbody2D _rb;
+
+    private float Radius => modelTrs.localScale.x * .5f;
     
     private void Start()
     {
         _mainCamera = Camera.main;
         _rb = GetComponent<Rigidbody2D>();
         // var inputActions = InputManager.Actions;
+        
+        blowEmitter.gameObject.SetActive(false);
     }
 
     protected override void OnPopComplete()
@@ -35,8 +44,22 @@ public class CharacterController : Bubble
         if (HasBlowInput(out var hit))
         {
             ApplyForce(hit.point);
+            UpdateBlowVFX(hit.point);
         }
-        //velocity = _rb.linearVelocity.magnitude;
+        else
+        {
+            blowEmitter.gameObject.SetActive(false);
+        }
+    }
+
+    private void UpdateBlowVFX(Vector3 point)
+    {
+        blowEmitter.gameObject.SetActive(true);
+        blowEmitter.SetPosition(point);
+
+        var dist = (point - transform.position).magnitude;
+        blowEmitter.SetDistance(dist - Radius, pushRange - Radius);
+        blowEmitter.LookAt(transform.position);
     }
 
     private bool HasBlowInput(out RaycastHit hit)
@@ -65,7 +88,7 @@ public class CharacterController : Bubble
 
     private void Grow()
     {
-        modelChildTransform.DOScale(transform.localScale + radiusIncrement * Vector3.one, .4f).SetEase(Ease.OutBounce);
+        modelTrs.DOScale(transform.localScale + radiusIncrement * Vector3.one, .4f).SetEase(Ease.OutBounce);
         // modelChildTransform.localScale += radiusIncrement * Vector3.one;
         _rb.mass += massIncrement;
         AudioManager.Instance.PlayBubbleMerge();
@@ -103,9 +126,9 @@ public class CharacterController : Bubble
         var bumpStretch = 1f + bumpDelta;
         var bumpTime = 0.1f + 0.2f * impactVelocityRemapped;
         AudioManager.Instance.PlayBubbleBounce(1 - impactVelocityRemapped);
-        Sequence bump = DOTween.Sequence();
-        bump.Append(transform.DOScale(new Vector3(bumpSquash, bumpStretch, bumpSquash), bumpTime))
-            .Append(transform.DOScale(new Vector3(bumpStretch, bumpSquash, bumpStretch), bumpTime))
-            .Append(transform.DOScale(Vector3.one, bumpTime));
+        var bump = DOTween.Sequence();
+        bump.Append(modelRootTrs.DOScale(new Vector3(bumpSquash, bumpStretch, bumpSquash), bumpTime))
+            .Append(modelRootTrs.DOScale(new Vector3(bumpStretch, bumpSquash, bumpStretch), bumpTime))
+            .Append(modelRootTrs.DOScale(Vector3.one, bumpTime));
     }
 }
