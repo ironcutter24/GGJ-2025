@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class CharacterController : Bubble
 {
+    [SerializeField] private float radiusIncrement = 0.5f;
+    [SerializeField] private float massIncrement = 0.1f;
     [SerializeField] private float maxPushForce = 10f;
     [SerializeField] private float pushRange = 5f;
     [SerializeField] private AnimationCurve forceFalloff;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private Transform modelChildTransform;
 
     private Camera _mainCamera;
     private Rigidbody2D _rb;
@@ -53,5 +57,23 @@ public class CharacterController : Bubble
         var normalizedDistance = (pushRange - Mathf.Clamp(dir.magnitude, 0f, pushRange))/pushRange;
         var falloff = forceFalloff.Evaluate(normalizedDistance);
         _rb.AddForce(dir.normalized * (falloff * maxPushForce));
+    }
+
+    private void Grow()
+    {
+        modelChildTransform.DOScale(transform.localScale + radiusIncrement * Vector3.one, .4f).SetEase(Ease.OutBounce);
+        // modelChildTransform.localScale += radiusIncrement * Vector3.one;
+        _rb.mass += massIncrement;
+
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.attachedRigidbody.CompareTag("Bubble") && collision.gameObject.layer == 10)
+        {
+            Grow();
+            Destroy(collision.attachedRigidbody.gameObject);
+        }
     }
 }

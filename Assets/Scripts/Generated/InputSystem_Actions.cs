@@ -1045,6 +1045,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugGrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc39af2d-de42-438e-9fa3-0d6772cf796f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1056,6 +1065,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e1bc23a-be76-4937-a80a-165849ba8142"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugGrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1152,6 +1172,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_Newaction = m_Debug.FindAction("New action", throwIfNotFound: true);
+        m_Debug_DebugGrow = m_Debug.FindAction("DebugGrow", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1457,11 +1478,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Debug;
     private List<IDebugActions> m_DebugActionsCallbackInterfaces = new List<IDebugActions>();
     private readonly InputAction m_Debug_Newaction;
+    private readonly InputAction m_Debug_DebugGrow;
     public struct DebugActions
     {
         private @InputSystem_Actions m_Wrapper;
         public DebugActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Newaction => m_Wrapper.m_Debug_Newaction;
+        public InputAction @DebugGrow => m_Wrapper.m_Debug_DebugGrow;
         public InputActionMap Get() { return m_Wrapper.m_Debug; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1474,6 +1497,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Newaction.started += instance.OnNewaction;
             @Newaction.performed += instance.OnNewaction;
             @Newaction.canceled += instance.OnNewaction;
+            @DebugGrow.started += instance.OnDebugGrow;
+            @DebugGrow.performed += instance.OnDebugGrow;
+            @DebugGrow.canceled += instance.OnDebugGrow;
         }
 
         private void UnregisterCallbacks(IDebugActions instance)
@@ -1481,6 +1507,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Newaction.started -= instance.OnNewaction;
             @Newaction.performed -= instance.OnNewaction;
             @Newaction.canceled -= instance.OnNewaction;
+            @DebugGrow.started -= instance.OnDebugGrow;
+            @DebugGrow.performed -= instance.OnDebugGrow;
+            @DebugGrow.canceled -= instance.OnDebugGrow;
         }
 
         public void RemoveCallbacks(IDebugActions instance)
@@ -1572,5 +1601,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface IDebugActions
     {
         void OnNewaction(InputAction.CallbackContext context);
+        void OnDebugGrow(InputAction.CallbackContext context);
     }
 }
