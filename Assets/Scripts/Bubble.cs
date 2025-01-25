@@ -3,17 +3,17 @@ using UnityEngine;
 
 public abstract class Bubble : MonoBehaviour
 {
-    private const float DissolveTime = 0.2f;
-    private static readonly int DissolveAmount = Shader.PropertyToID("_DissolveAmount");
+    private const float DissolveTime = .2f;
+    private static readonly int DissolveAmount = Shader.PropertyToID("_alphaClipThreshold");
     
     private bool _wasPopped;
     private Material _rendMat;
 
     [SerializeField] private ParticleSystem popParticles;
 
-    private void Start()
+    protected virtual void Start()
     {
-        var rend = GetComponent<MeshRenderer>();
+        var rend = GetComponentInChildren<MeshRenderer>();
         if (rend)
         {
             rend.sharedMaterial = new Material(rend.sharedMaterial);
@@ -29,6 +29,7 @@ public abstract class Bubble : MonoBehaviour
         var popSequence = DOTween.Sequence();
         popSequence
             .Append(DOTween.To(() => 0f, SetDissolveAmount, 1f, DissolveTime))
+            .SetEase(Ease.InQuad)
             .InsertCallback(0f, SpawnPopParticles)
             .OnComplete(OnPopComplete);
     }

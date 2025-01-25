@@ -25,8 +25,9 @@ public class CharacterController : Bubble
 
     private float Radius => modelTrs.localScale.x * .5f;
     
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _mainCamera = Camera.main;
         _rb = GetComponent<Rigidbody2D>();
         // var inputActions = InputManager.Actions;

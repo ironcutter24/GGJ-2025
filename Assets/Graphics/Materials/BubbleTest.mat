@@ -127,6 +127,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _alphaClipThreshold: 0
     - _alphaColor: 0
     - _alphaCore: 0
     - _offsetMagnitude: 0.05
