@@ -42,6 +42,6 @@ public abstract class Bubble : MonoBehaviour
     
     private void SpawnPopParticles()
     {
-        popParticles?.Play();
+        Instantiate(popParticles, transform.position, Quaternion.identity);
     }
 }
