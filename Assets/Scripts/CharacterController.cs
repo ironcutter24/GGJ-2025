@@ -4,6 +4,7 @@ using DG.Tweening;
 
 public class CharacterController : Bubble
 {
+    [SerializeField] private float velocityPopThreshold = 7.5f;
     [SerializeField] private float radiusIncrement = 0.5f;
     [SerializeField] private float massIncrement = 0.1f;
     [SerializeField] private float maxPushForce = 10f;
@@ -33,6 +34,7 @@ public class CharacterController : Bubble
         {
             ApplyForce(hit.point);
         }
+        //velocity = _rb.linearVelocity.magnitude;
     }
 
     private bool HasBlowInput(out RaycastHit hit)
@@ -74,6 +76,14 @@ public class CharacterController : Bubble
         {
             Grow();
             Destroy(collision.attachedRigidbody.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 0 && collision.relativeVelocity.magnitude >= velocityPopThreshold)
+        {
+            Pop();
         }
     }
 }
