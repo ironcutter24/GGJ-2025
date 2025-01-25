@@ -1,22 +1,26 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterController : MonoBehaviour
+public class CharacterController : Bubble
 {
-    //[SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float maxPushForce = 10f;
     [SerializeField] private float pushRange = 5f;
     [SerializeField] private AnimationCurve forceFalloff;
     [SerializeField] private LayerMask groundMask;
 
     private Camera _mainCamera;
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
     
     private void Start()
     {
         _mainCamera = Camera.main;
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         // var inputActions = InputManager.Actions;
+    }
+
+    protected override void OnPopComplete()
+    {
+        GameManager.Instance.ReloadCurrentLevel();
     }
 
     private void FixedUpdate()
@@ -45,19 +49,9 @@ public class CharacterController : MonoBehaviour
     private void ApplyForce(Vector3 from)
     {
         var dir = transform.position - from;
-        var pushForce = maxPushForce;
         dir.z = 0f;
         var normalizedDistance = (pushRange - Mathf.Clamp(dir.magnitude, 0f, pushRange))/pushRange;
         var falloff = forceFalloff.Evaluate(normalizedDistance);
-        rb.AddForce(dir.normalized * falloff * maxPushForce);
+        _rb.AddForce(dir.normalized * (falloff * maxPushForce));
     }
-
-    /*
-    private void MoveAwayFrom(Vector3 pos)
-    {
-        var dir = transform.position - pos;
-        dir.z = 0f;
-        transform.position += dir.normalized * (moveSpeed * Time.deltaTime);
-    }
-    */
 }

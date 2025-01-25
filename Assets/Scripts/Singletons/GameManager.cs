@@ -20,14 +20,24 @@ public class GameManager : Singleton<GameManager>
     {
         var nextIndex = sceneList
             .Where(t => t == SceneManager.GetActiveScene().name)
-            .Select((v, i) => i + 1).First();
+            .Select((_, i) => i + 1).First();
         
-        var newIndex = SceneManager.GetActiveScene();
         if (nextIndex < sceneList.Length)
         {
             sceneIndex = nextIndex;
-            //var nextScene = scene
-            //SceneManager.LoadScene(nextScene.name, LoadSceneMode.Single);   
+            LoadLevel(sceneIndex);
         }
+    }
+
+    public void ReloadCurrentLevel()
+    {
+        // TODO: Show game over UI
+        
+        LoadLevel(sceneIndex);
+    }
+
+    private void LoadLevel(int index)
+    {
+        SceneManager.LoadScene(sceneList[index], LoadSceneMode.Single);
     }
 }
