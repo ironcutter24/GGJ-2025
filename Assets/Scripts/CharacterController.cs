@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Mathematics;
 using DG.Tweening;
 
 public class CharacterController : Bubble
 {
     [SerializeField] private float velocityPopThreshold = 7.5f;
+    [SerializeField] private float velocityBumpThreshold = 0.5f;
     [SerializeField] private float radiusIncrement = 0.5f;
     [SerializeField] private float massIncrement = 0.1f;
     [SerializeField] private float maxPushForce = 10f;
@@ -81,9 +83,29 @@ public class CharacterController : Bubble
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 0 && collision.relativeVelocity.magnitude >= velocityPopThreshold)
+        if (collision.gameObject.layer == 0)
         {
-            Pop();
+            if (collision.relativeVelocity.magnitude >= velocityPopThreshold)
+            {
+                Pop();
+            }
+            else if(collision.relativeVelocity.magnitude > velocityBumpThreshold)
+            {
+                Bump(collision.relativeVelocity.magnitude);
+            }
         }
+    }
+
+    private void Bump(float velocityMagnitude)
+    {
+        var impactVelocityRemapped = math.remap(velocityBumpThreshold, velocityPopThreshold, 0f, 1f, velocityMagnitude);
+        var bumpDelta = impactVelocityRemapped * 0.15f + 0.1f;
+        var bumpSquash = 1f - bumpDelta;
+        var bumpStretch = 1f + bumpDelta;
+        var bumpTime = 0.1f + 0.2f * impactVelocityRemapped;
+        Sequence bump = DOTween.Sequence();
+        bump.Append(transform.DOScale(new Vector3(bumpSquash, bumpStretch, bumpSquash), bumpTime))
+            .Append(transform.DOScale(new Vector3(bumpStretch, bumpSquash, bumpStretch), bumpTime))
+            .Append(transform.DOScale(Vector3.one, bumpTime));
     }
 }
