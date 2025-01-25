@@ -5,6 +5,8 @@ public abstract class Bubble : MonoBehaviour
 {
     private const float DissolveTime = 0.2f;
     private static readonly int DissolveAmount = Shader.PropertyToID("_DissolveAmount");
+    
+    private bool _wasPopped;
     private Material _rendMat;
 
     [SerializeField] private ParticleSystem popParticles;
@@ -21,6 +23,9 @@ public abstract class Bubble : MonoBehaviour
 
     public void Pop()
     {
+        if (_wasPopped) return;
+        _wasPopped = true;
+        
         var popSequence = DOTween.Sequence();
         popSequence
             .Append(DOTween.To(() => 0f, SetDissolveAmount, 1f, DissolveTime))
