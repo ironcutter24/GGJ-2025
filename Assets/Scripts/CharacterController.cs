@@ -68,8 +68,7 @@ public class CharacterController : Bubble
         modelChildTransform.DOScale(transform.localScale + radiusIncrement * Vector3.one, .4f).SetEase(Ease.OutBounce);
         // modelChildTransform.localScale += radiusIncrement * Vector3.one;
         _rb.mass += massIncrement;
-
-
+        AudioManager.Instance.PlayBubbleMerge();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -103,6 +102,7 @@ public class CharacterController : Bubble
         var bumpSquash = 1f - bumpDelta;
         var bumpStretch = 1f + bumpDelta;
         var bumpTime = 0.1f + 0.2f * impactVelocityRemapped;
+        AudioManager.Instance.PlayBubbleBounce(impactVelocityRemapped);
         Sequence bump = DOTween.Sequence();
         bump.Append(transform.DOScale(new Vector3(bumpSquash, bumpStretch, bumpSquash), bumpTime))
             .Append(transform.DOScale(new Vector3(bumpStretch, bumpSquash, bumpStretch), bumpTime))

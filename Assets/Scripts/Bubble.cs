@@ -25,7 +25,7 @@ public abstract class Bubble : MonoBehaviour
     {
         if (_wasPopped) return;
         _wasPopped = true;
-        
+        AudioManager.Instance.PlayPopMerge();
         var popSequence = DOTween.Sequence();
         popSequence
             .Append(DOTween.To(() => 0f, SetDissolveAmount, 1f, DissolveTime))
