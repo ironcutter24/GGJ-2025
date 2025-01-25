@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3370190870440677476}
   - component: {fileID: 8606670629373914571}
   - component: {fileID: 2152253259893341505}
+  - component: {fileID: 1065802017812834760}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -61,3 +62,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd015975284c5554c87c8ee08fc0c37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1065802017812834760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278559598414569611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08599ac8da881d843ae21ad3b123f453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubbleBounceEvent:
+    Guid:
+      Data1: -473971015
+      Data2: 1342038573
+      Data3: -290869613
+      Data4: 87254029
+    Path: event:/Bubble/Bounce
+  bubbleMergeEvent:
+    Guid:
+      Data1: 1043104998
+      Data2: 1328815750
+      Data3: -867533434
+      Data4: 786086526
+    Path: event:/Bubble/Merge
+  bubblePopEvent:
+    Guid:
+      Data1: 175740119
+      Data2: 1123199332
+      Data3: 604129671
+      Data4: 785579772
+    Path: event:/Bubble/Pop
