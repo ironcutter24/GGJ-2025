@@ -4,7 +4,7 @@ using Utilities;
 public class AudioManager : Singleton<AudioManager>
 {
     private FMOD.Studio.EventInstance _bubbleBounceInstance;
-    
+
     [SerializeField] private FMODUnity.EventReference bubbleBounceEvent;
     [SerializeField] private FMODUnity.EventReference bubbleMergeEvent;
     [SerializeField] private FMODUnity.EventReference bubblePopEvent;
@@ -15,8 +15,9 @@ public class AudioManager : Singleton<AudioManager>
     }
 
     public void PlayBubbleMerge() => PlaySound(bubbleMergeEvent);
-    public void PlayPopMerge() => PlaySound(bubblePopEvent);
     
+    public void PlayBubblePop() => PlaySound(bubblePopEvent);
+
     public void PlayBubbleBounce(float pitch)
     {
         pitch = Mathf.Clamp01(pitch);

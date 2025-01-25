@@ -102,7 +102,7 @@ public class CharacterController : Bubble
         var bumpSquash = 1f - bumpDelta;
         var bumpStretch = 1f + bumpDelta;
         var bumpTime = 0.1f + 0.2f * impactVelocityRemapped;
-        AudioManager.Instance.PlayBubbleBounce(impactVelocityRemapped);
+        AudioManager.Instance.PlayBubbleBounce(1 - impactVelocityRemapped);
         Sequence bump = DOTween.Sequence();
         bump.Append(transform.DOScale(new Vector3(bumpSquash, bumpStretch, bumpSquash), bumpTime))
             .Append(transform.DOScale(new Vector3(bumpStretch, bumpSquash, bumpStretch), bumpTime))

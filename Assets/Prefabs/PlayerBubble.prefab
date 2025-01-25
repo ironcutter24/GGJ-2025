@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popParticles: {fileID: 0}
+  velocityPopThreshold: 8.5
+  velocityBumpThreshold: 0.5
   radiusIncrement: 0.5
   massIncrement: 0.1
   maxPushForce: 20
@@ -309,7 +311,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 004371fa76a69ec4e937887c04945318, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
