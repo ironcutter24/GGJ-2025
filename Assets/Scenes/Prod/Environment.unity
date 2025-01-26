@@ -645,7 +645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590579016007792908, guid: b2c066dff1b16dc4d8acb43eb55487ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -120.8
+      value: -153
       objectReference: {fileID: 0}
     - target: {fileID: 6590579016007792908, guid: b2c066dff1b16dc4d8acb43eb55487ae, type: 3}
       propertyPath: m_LocalPosition.y
@@ -653,7 +653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590579016007792908, guid: b2c066dff1b16dc4d8acb43eb55487ae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 106
+      value: 102
       objectReference: {fileID: 0}
     - target: {fileID: 6590579016007792908, guid: b2c066dff1b16dc4d8acb43eb55487ae, type: 3}
       propertyPath: m_LocalRotation.w
@@ -684,16 +684,16 @@ PrefabInstance:
       value: 1.356
       objectReference: {fileID: 0}
     - target: {fileID: 7221949892927801096, guid: b2c066dff1b16dc4d8acb43eb55487ae, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 3
+      propertyPath: lengthInSec
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 7221949892927801096, guid: b2c066dff1b16dc4d8acb43eb55487ae, type: 3}
       propertyPath: InitialModule.startSize.minScalar
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7221949892927801096, guid: b2c066dff1b16dc4d8acb43eb55487ae, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 1
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 7221949892927801096, guid: b2c066dff1b16dc4d8acb43eb55487ae, type: 3}
       propertyPath: InitialModule.startSizeY.minScalar
