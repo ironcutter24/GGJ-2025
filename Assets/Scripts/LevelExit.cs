@@ -24,7 +24,7 @@ public class LevelExit : MonoBehaviour
 
     private void OnDestroy()
     {
-        _player.Merged -= OnBubbleMerged;
+        //_player.Merged -= OnBubbleMerged;
     }
 
     private void OnBubbleMerged()
