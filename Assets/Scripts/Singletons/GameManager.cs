@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        
+        InputManager.Actions.Player.QuitGame.performed += _ => Application.Quit();
     }
 
     public void LoadNextLevel()
