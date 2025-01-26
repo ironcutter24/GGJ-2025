@@ -1,4 +1,4 @@
-using System.Linq;
+using System;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,15 +9,20 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, Scene] private string menuScene;
     [SerializeField, Scene] private string environmentScene;
     [Space]
-    [SerializeField, Min(0)] private int levelIndex;
+    [SerializeField, ReadOnly] private int levelIndex;
     [SerializeField, Scene] private string[] levelList;
     
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == this)
+        {
+            DontDestroyOnLoad(gameObject);
         
-        InputManager.Actions.Player.RestartLevel.performed += _ => LoadLevel(levelIndex);
-        InputManager.Actions.Player.QuitGame.performed += _ => Application.Quit();
+            levelIndex = 0;
+        
+            InputManager.Actions.Player.RestartLevel.performed += _ => LoadLevel(levelIndex);
+            InputManager.Actions.Player.QuitGame.performed += _ => Application.Quit();
+        }
     }
 
     public void RestartGame()
@@ -33,14 +38,18 @@ public class GameManager : Singleton<GameManager>
     
     public void LoadNextLevel()
     {
-        var nextIndex = levelList
-            .Where(t => t == SceneManager.GetSceneAt(1).name)
-            .Select((_, i) => i + 1).First();
-        
+        var currentLevelName = SceneManager.GetSceneAt(1).name;
+        Debug.Log($"Current: {currentLevelName}");
+
+        var nextIndex = Array.IndexOf(levelList, currentLevelName) + 1;
         if (nextIndex < levelList.Length)
         {
             levelIndex = nextIndex;
             LoadLevel(levelIndex);
+        }
+        else
+        {
+            Debug.LogWarning("Level is out of range");
         }
     }
 
