@@ -130,8 +130,8 @@ Material:
     - _alphaClipThreshold: 0
     - _alphaColor: 0
     - _alphaCore: 0
-    - _offsetMagnitude: 0.1
-    - _scrollSpeed: 1.6
+    - _offsetMagnitude: 0.04
+    - _scrollSpeed: 5
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
