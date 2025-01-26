@@ -48,9 +48,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4555383892632215542, guid: 413cbcd35dd006b41b63004661c6f420, type: 3}
+      propertyPath: popParticles
+      value: 
+      objectReference: {fileID: 8723126575341822271, guid: 395dba44d5505a7438b6d5e5dc31033f, type: 3}
     - target: {fileID: 5679283323484534724, guid: 413cbcd35dd006b41b63004661c6f420, type: 3}
       propertyPath: m_Name
-      value: FixedBubble Variant
+      value: BubblePickupFixed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
