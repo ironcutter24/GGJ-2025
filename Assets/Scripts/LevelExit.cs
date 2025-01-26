@@ -15,7 +15,7 @@ public class LevelExit : MonoBehaviour
             .FindWithTag("Player")
             .GetComponent<CharacterController>();
 
-        _player.merged += OnBubbleMerged;
+        _player.Merged += OnBubbleMerged;
         
         // Level start logic
         
@@ -24,7 +24,7 @@ public class LevelExit : MonoBehaviour
 
     private void OnDestroy()
     {
-        _player.merged -= OnBubbleMerged;
+        _player.Merged -= OnBubbleMerged;
     }
 
     private void OnBubbleMerged()

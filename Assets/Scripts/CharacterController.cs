@@ -21,19 +21,18 @@ public class CharacterController : Bubble
 
     
     private Camera _mainCamera;
-    private Rigidbody2D _rb;
 
     private float Radius => modelTrs.localScale.x * .5f;
 
 
-    public event System.Action merged;
+    public event System.Action Merged;
     
     
     protected override void Start()
     {
         base.Start();
         _mainCamera = Camera.main;
-        _rb = GetComponent<Rigidbody2D>();
+        
         // var inputActions = InputManager.Actions;
         
         blowEmitter.gameObject.SetActive(false);
@@ -88,13 +87,13 @@ public class CharacterController : Bubble
         dir.z = 0f;
         var normalizedDistance = (pushRange - Mathf.Clamp(dir.magnitude, 0f, pushRange))/pushRange;
         var falloff = forceFalloff.Evaluate(normalizedDistance);
-        _rb.AddForce(dir.normalized * (falloff * maxPushForce));
+        Rb.AddForce(dir.normalized * (falloff * maxPushForce));
     }
 
     private void Grow()
     {
         modelTrs.DOScale(modelTrs.localScale + radiusIncrement * Vector3.one, .4f).SetEase(Ease.OutBounce);
-        _rb.mass += massIncrement;
+        Rb.mass += massIncrement;
         AudioManager.Instance.PlayBubbleMerge();
     }
 
@@ -104,7 +103,7 @@ public class CharacterController : Bubble
         {
             Grow();
             Destroy(collision.attachedRigidbody.gameObject);
-            merged?.Invoke();
+            Merged?.Invoke();
         }
     }
 

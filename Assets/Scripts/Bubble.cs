@@ -9,11 +9,14 @@ public abstract class Bubble : MonoBehaviour
     
     private bool _wasPopped;
     private Material _rendMat;
+    protected Rigidbody2D Rb;
 
     [SerializeField] private ParticleSystem popParticles;
 
     protected virtual void Start()
     {
+        Rb = GetComponent<Rigidbody2D>();
+        
         var rend = GetComponentInChildren<MeshRenderer>();
         if (rend)
         {
@@ -26,13 +29,17 @@ public abstract class Bubble : MonoBehaviour
     {
         if (_wasPopped) return;
         _wasPopped = true;
-        AudioManager.Instance.PlayBubblePop();
+        
+        Rb.linearVelocity = Vector2.zero;
+        
         var popSequence = DOTween.Sequence();
         popSequence
             .Append(DOTween.To(() => 0f, SetDissolveAmount, 1f, DissolveTime))
             .SetEase(Ease.InQuad)
             .InsertCallback(0f, SpawnPopParticles)
             .OnComplete(OnPopComplete);
+        
+        AudioManager.Instance.PlayBubblePop();
     }
     
     protected abstract void OnPopComplete();
