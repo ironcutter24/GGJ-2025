@@ -53,7 +53,10 @@ MonoBehaviour:
   levelList:
   - Level_Tutorial
   - Level_1
+  - Level_2
   - Level_3
+  - Level_4
+  - Level_5
   - Credits
 --- !u!114 &2152253259893341505
 MonoBehaviour:
