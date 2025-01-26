@@ -18,8 +18,6 @@ public class GameManager : Singleton<GameManager>
         
         InputManager.Actions.Player.RestartLevel.performed += _ => LoadLevel(levelIndex);
         InputManager.Actions.Player.QuitGame.performed += _ => Application.Quit();
-        
-        LoadMainMenu();
     }
 
     public void RestartGame()
