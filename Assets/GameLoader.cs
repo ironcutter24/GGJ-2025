@@ -1,16 +1,23 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameLoader : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(2f);
         
+        InputManager.Actions.Player.AnyKey.performed += LoadGame;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        InputManager.Actions.Player.AnyKey.performed -= LoadGame;
+    }
+
+    private static void LoadGame(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.RestartGame();
     }
 }

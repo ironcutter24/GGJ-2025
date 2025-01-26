@@ -52,6 +52,7 @@ MonoBehaviour:
   levelList:
   - Level_Tutorial
   - Level_1
+  - ThanksForPlaying
 --- !u!114 &2152253259893341505
 MonoBehaviour:
   m_ObjectHideFlags: 0

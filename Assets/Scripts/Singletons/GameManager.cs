@@ -18,12 +18,19 @@ public class GameManager : Singleton<GameManager>
         
         InputManager.Actions.Player.RestartLevel.performed += _ => LoadLevel(levelIndex);
         InputManager.Actions.Player.QuitGame.performed += _ => Application.Quit();
+        
+        LoadMainMenu();
     }
 
     public void RestartGame()
     {
         levelIndex = 0;
         ReloadCurrentLevel();
+    }
+
+    public void LoadMainMenu()
+    {
+        LoadLevel(menuScene);
     }
     
     public void LoadNextLevel()
@@ -48,7 +55,12 @@ public class GameManager : Singleton<GameManager>
 
     private void LoadLevel(int index)
     {
+        LoadLevel(levelList[index]);
+    }
+
+    private void LoadLevel(string levelName)
+    {
         SceneManager.LoadScene(environmentScene, LoadSceneMode.Single);
-        SceneManager.LoadScene(levelList[index], LoadSceneMode.Additive);
+        SceneManager.LoadScene(levelName, LoadSceneMode.Additive);
     }
 }

@@ -134,6 +134,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AnyKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""bada5144-0c89-4d49-94d7-f8269402246c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -552,6 +561,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""RestartLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d58db04-eb54-4f95-9bbb-a6ada86afc3e"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""AnyKey"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1179,6 +1199,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Blow = m_Player.FindAction("Blow", throwIfNotFound: true);
         m_Player_RestartLevel = m_Player.FindAction("RestartLevel", throwIfNotFound: true);
         m_Player_QuitGame = m_Player.FindAction("QuitGame", throwIfNotFound: true);
+        m_Player_AnyKey = m_Player.FindAction("AnyKey", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1274,6 +1295,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Blow;
     private readonly InputAction m_Player_RestartLevel;
     private readonly InputAction m_Player_QuitGame;
+    private readonly InputAction m_Player_AnyKey;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1290,6 +1312,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Blow => m_Wrapper.m_Player_Blow;
         public InputAction @RestartLevel => m_Wrapper.m_Player_RestartLevel;
         public InputAction @QuitGame => m_Wrapper.m_Player_QuitGame;
+        public InputAction @AnyKey => m_Wrapper.m_Player_AnyKey;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1335,6 +1358,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @QuitGame.started += instance.OnQuitGame;
             @QuitGame.performed += instance.OnQuitGame;
             @QuitGame.canceled += instance.OnQuitGame;
+            @AnyKey.started += instance.OnAnyKey;
+            @AnyKey.performed += instance.OnAnyKey;
+            @AnyKey.canceled += instance.OnAnyKey;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1375,6 +1401,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @QuitGame.started -= instance.OnQuitGame;
             @QuitGame.performed -= instance.OnQuitGame;
             @QuitGame.canceled -= instance.OnQuitGame;
+            @AnyKey.started -= instance.OnAnyKey;
+            @AnyKey.performed -= instance.OnAnyKey;
+            @AnyKey.canceled -= instance.OnAnyKey;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1615,6 +1644,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnBlow(InputAction.CallbackContext context);
         void OnRestartLevel(InputAction.CallbackContext context);
         void OnQuitGame(InputAction.CallbackContext context);
+        void OnAnyKey(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
