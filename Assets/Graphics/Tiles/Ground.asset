@@ -13,6 +13,44 @@ MonoBehaviour:
   m_Name: Ground
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 1667862146, guid: 40d8ad67eb8672d419d3816ed0bdd32f, type: 3}
-  m_DefaultGameObject: {fileID: 2596229248816301426, guid: 1298b5ae6debb1047ab0da8c054c95c6, type: 3}
-  m_DefaultColliderType: 1
-  m_TilingRules: []
+  m_DefaultGameObject: {fileID: 7289051128569116600, guid: bf1f77871edab8b4b917432f41ba9de9, type: 3}
+  m_DefaultColliderType: 2
+  m_TilingRules:
+  - m_Id: 1
+    m_Sprites:
+    - {fileID: 1667862146, guid: 40d8ad67eb8672d419d3816ed0bdd32f, type: 3}
+    m_GameObject: {fileID: 4669458156376048150, guid: 6cb3798cfb1eba4428bbe14aa8289681, type: 3}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_Output: 0
+    m_ColliderType: 2
+    m_RandomTransform: 0
+    m_Neighbors: 01000000010000000200000002000000
+    m_NeighborPositions:
+    - {x: -1, y: 0, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: -1, z: 0}
+    m_RuleTransform: 1
+  - m_Id: 0
+    m_Sprites:
+    - {fileID: 0}
+    m_GameObject: {fileID: 7289051128569116600, guid: bf1f77871edab8b4b917432f41ba9de9, type: 3}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_Output: 0
+    m_ColliderType: 2
+    m_RandomTransform: 0
+    m_Neighbors: 
+    m_NeighborPositions:
+    - {x: -1, y: 1, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 1, y: 1, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: -1, z: 0}
+    - {x: 0, y: -1, z: 0}
+    - {x: 1, y: -1, z: 0}
+    m_RuleTransform: 0
