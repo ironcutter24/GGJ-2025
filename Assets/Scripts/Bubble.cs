@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class Bubble : MonoBehaviour
 {
     private const float DissolveTime = .3f;
+    private const float PopupTime = 1.5f;
     private static readonly int DissolveAmount = Shader.PropertyToID("_alphaClipThreshold");
     
     private bool _wasPopped;
@@ -44,5 +45,11 @@ public abstract class Bubble : MonoBehaviour
     private void SpawnPopParticles()
     {
         Instantiate(popParticles, transform.position, Quaternion.identity);
+    }
+
+    private void BubbleSpawnAnimation()
+    {
+        transform.localScale = Vector3.one * 0.01f;
+        transform.DOScale(Vector3.one, PopupTime + Random.Range(0f, 1f)).SetEase(Ease.OutElastic);
     }
 }
