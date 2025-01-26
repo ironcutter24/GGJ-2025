@@ -122,6 +122,11 @@ public class CharacterController : Bubble
         }
     }
 
+    private void EvaluateSolidCollision()
+    {
+        
+    }
+
     private void Bump(float velocityMagnitude)
     {
         var impactVelocityRemapped = math.remap(velocityBumpThreshold, velocityPopThreshold, 0f, 1f, velocityMagnitude);
