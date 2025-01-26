@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184a3091e7ddd5f4a9a083b2b8845df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popParticles: {fileID: 0}
+  popParticles: {fileID: 8723126575341822271, guid: cb65b79043442e64ab3b5379e29a5e51, type: 3}
   maxAttractionForce: 20
   attractionTriggerCollider: {fileID: 7890548578459892821}
   forceFalloff:
