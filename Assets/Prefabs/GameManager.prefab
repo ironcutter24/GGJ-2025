@@ -46,11 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be1a7e5396c99048b89585a6c1e1453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuScene: SampleScene
+  menuScene: Environment
   environmentScene: Environment
   levelIndex: 0
   levelList:
-  - Level_0
   - Level_1
 --- !u!114 &2152253259893341505
 MonoBehaviour:
