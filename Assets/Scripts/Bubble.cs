@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Bubble : MonoBehaviour
 {
-    private const float DissolveTime = .2f;
+    private const float DissolveTime = .3f;
     private static readonly int DissolveAmount = Shader.PropertyToID("_alphaClipThreshold");
     
     private bool _wasPopped;
