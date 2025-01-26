@@ -47,9 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuScene: SampleScene
-  sceneIndex: 0
-  sceneList:
-  - SampleScene
+  environmentScene: Environment
+  levelIndex: 0
+  levelList:
+  - Level_0
+  - Level_1
 --- !u!114 &2152253259893341505
 MonoBehaviour:
   m_ObjectHideFlags: 0

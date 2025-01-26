@@ -24,6 +24,10 @@ public class CharacterController : Bubble
     private Rigidbody2D _rb;
 
     private float Radius => modelTrs.localScale.x * .5f;
+
+
+    public event System.Action merged;
+    
     
     protected override void Start()
     {
@@ -96,10 +100,11 @@ public class CharacterController : Bubble
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.attachedRigidbody.CompareTag("Bubble") && collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == 10 && collision.attachedRigidbody.CompareTag("Bubble"))
         {
             Grow();
             Destroy(collision.attachedRigidbody.gameObject);
+            merged?.Invoke();
         }
     }
 
