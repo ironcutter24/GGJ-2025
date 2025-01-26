@@ -8,7 +8,7 @@ public class PickupBubble : Bubble
 
     protected override void OnPopComplete()
     {
-        Destroy(gameObject);
+        GameManager.Instance.ReloadCurrentLevel();
     }
     
     protected override void Start()
