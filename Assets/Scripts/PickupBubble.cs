@@ -2,27 +2,25 @@ using UnityEngine;
 
 public class PickupBubble : Bubble
 {
+    private Rigidbody2D _rb;
+    
     [SerializeField] private float maxAttractionForce = 10f;
     [SerializeField] private CircleCollider2D attractionTriggerCollider;
     [SerializeField] private AnimationCurve forceFalloff;
-    private Rigidbody2D _rb;
-    
+
     protected override void OnPopComplete()
     {
-        // throw new System.NotImplementedException();
+        Destroy(gameObject);
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     protected override void Start()
     {
         base.Start();
         _rb = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
         
+        var pos = transform.position;
+        pos.z = 0f;
+        transform.position = pos;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -2,32 +2,34 @@ using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Utilities;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField, Scene] private string menuScene;
     [Space]
-    [SerializeField, Min(0)] private int sceneIndex;
-    [SerializeField, Scene] private string[] sceneList;
+    [SerializeField, Min(0)] private int levelIndex;
+    [SerializeField, Scene] private string[] levelList;
     
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
         
+        InputManager.Actions.Player.RestartLevel.performed += _ => LoadLevel(levelIndex);
         InputManager.Actions.Player.QuitGame.performed += _ => Application.Quit();
     }
 
     public void LoadNextLevel()
     {
-        var nextIndex = sceneList
+        var nextIndex = levelList
             .Where(t => t == SceneManager.GetActiveScene().name)
             .Select((_, i) => i + 1).First();
         
-        if (nextIndex < sceneList.Length)
+        if (nextIndex < levelList.Length)
         {
-            sceneIndex = nextIndex;
-            LoadLevel(sceneIndex);
+            levelIndex = nextIndex;
+            LoadLevel(levelIndex);
         }
     }
 
@@ -35,11 +37,11 @@ public class GameManager : Singleton<GameManager>
     {
         // TODO: Show game over UI
         
-        LoadLevel(sceneIndex);
+        LoadLevel(levelIndex);
     }
 
     private void LoadLevel(int index)
     {
-        SceneManager.LoadScene(sceneList[index], LoadSceneMode.Single);
+        SceneManager.LoadScene(levelList[index], LoadSceneMode.Single);
     }
 }

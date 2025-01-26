@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BubbleTest
+  m_Name: BubbleGreenMat
   m_Shader: {fileID: -6465566751694194690, guid: 34764f85416638f47bbda73e8fc8d3b3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

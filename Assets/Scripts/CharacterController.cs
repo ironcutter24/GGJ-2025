@@ -89,8 +89,7 @@ public class CharacterController : Bubble
 
     private void Grow()
     {
-        modelTrs.DOScale(transform.localScale + radiusIncrement * Vector3.one, .4f).SetEase(Ease.OutBounce);
-        // modelChildTransform.localScale += radiusIncrement * Vector3.one;
+        modelTrs.DOScale(modelTrs.localScale + radiusIncrement * Vector3.one, .4f).SetEase(Ease.OutBounce);
         _rb.mass += massIncrement;
         AudioManager.Instance.PlayBubbleMerge();
     }
@@ -126,10 +125,11 @@ public class CharacterController : Bubble
         var bumpSquash = 1f - bumpDelta;
         var bumpStretch = 1f + bumpDelta;
         var bumpTime = 0.1f + 0.2f * impactVelocityRemapped;
-        AudioManager.Instance.PlayBubbleBounce(1 - impactVelocityRemapped);
         var bump = DOTween.Sequence();
         bump.Append(modelRootTrs.DOScale(new Vector3(bumpSquash, bumpStretch, bumpSquash), bumpTime))
             .Append(modelRootTrs.DOScale(new Vector3(bumpStretch, bumpSquash, bumpStretch), bumpTime))
             .Append(modelRootTrs.DOScale(Vector3.one, bumpTime));
+        
+        AudioManager.Instance.PlayBubbleBounce(1 - impactVelocityRemapped);
     }
 }

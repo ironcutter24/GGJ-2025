@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 5196124282964244805}
   - component: {fileID: 8437646154767950514}
   m_Layer: 9
-  m_Name: PlayerBubble
+  m_Name: BubblePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   velocityPopThreshold: 8.5
   velocityBumpThreshold: 2
   radiusIncrement: 0.3
-  massIncrement: 0.1
+  massIncrement: 0.2
   maxPushForce: 20
   pushRange: 5
   forceFalloff:
@@ -5345,7 +5345,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 004371fa76a69ec4e937887c04945318, type: 2}
+  - {fileID: 2100000, guid: bf38de0c7e9553246a78695d0bc884c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

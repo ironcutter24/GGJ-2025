@@ -2451,6 +2451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBubble
       objectReference: {fileID: 0}
+    - target: {fileID: 5196124282964244805, guid: 74698a8af0dd2d24f92ba7bf47964ba4, type: 3}
+      propertyPath: massIncrement
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
