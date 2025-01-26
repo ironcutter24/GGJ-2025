@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/StartScene.unity
     guid: 1a21e40ecada531458040221333f9243
   - enabled: 1
-    path: Assets/Scenes/Prod/MainMenu.unity
-    guid: ff8c89f7594f57549a9ffb450bd394fe
-  - enabled: 1
     path: Assets/Scenes/Prod/Environment.unity
     guid: c195597aeda826e4380c233ed75fb754
+  - enabled: 1
+    path: Assets/Scenes/Menu/Menu.unity
+    guid: 314614dfec3ce4732a1896b3f8d530dd
   - enabled: 1
     path: Assets/Scenes/Damiano/Level_Tutorial.unity
     guid: c82fe1a796d51f24483cd1c7c22aec16
@@ -24,8 +24,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/Levels/Level_3.unity
     guid: f8b665f96404b6746b789d0199dd2ec9
   - enabled: 1
-    path: Assets/Scenes/Prod/ThanksForPlaying.unity
-    guid: b1fb9f07c15ec364a87333da58aeea43
+    path: Assets/Scenes/Menu/Credits.unity
+    guid: 10f1310a1d21240aa99e5aa99cbfd7fe
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
