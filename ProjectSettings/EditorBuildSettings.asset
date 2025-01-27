@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/Environment.unity
     guid: c195597aeda826e4380c233ed75fb754
   - enabled: 1
-    path: Assets/Scenes/Menu/Menu.unity
+    path: Assets/Scenes/Prod/MainMenu.unity
     guid: 314614dfec3ce4732a1896b3f8d530dd
   - enabled: 1
     path: Assets/Scenes/Damiano/Level_Tutorial.unity
@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/Levels/Level_5.unity
     guid: e43f317fcc9991440a2ad90214111d19
   - enabled: 1
-    path: Assets/Scenes/Menu/Credits.unity
+    path: Assets/Scenes/Prod/ThankYouForPlaying.unity
     guid: 10f1310a1d21240aa99e5aa99cbfd7fe
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

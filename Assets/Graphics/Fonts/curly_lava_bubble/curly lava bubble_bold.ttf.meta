@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d0d87b00b3c8b4c68bef715047894333
+guid: a5e56408d552c4042bb50df239adef77
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Lunar Escape
+  - curly lava bubble
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

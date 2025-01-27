@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 55f1484110dbd49dfaf3b07ebbb48d20
+guid: bcd53674aab53754db191743c70aad10
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Star Nursery Semi-Italic
+  - curly lava bubble
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

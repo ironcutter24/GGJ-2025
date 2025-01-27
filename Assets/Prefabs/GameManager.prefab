@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be1a7e5396c99048b89585a6c1e1453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuScene: Menu
+  menuScene: MainMenu
   environmentScene: Environment
   levelIndex: 0
   levelList:
@@ -57,7 +57,7 @@ MonoBehaviour:
   - Level_3
   - Level_4
   - Level_5
-  - Credits
+  - ThankYouForPlaying
 --- !u!114 &2152253259893341505
 MonoBehaviour:
   m_ObjectHideFlags: 0
