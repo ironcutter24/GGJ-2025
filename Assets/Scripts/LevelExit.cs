@@ -6,6 +6,7 @@ public class LevelExit : MonoBehaviour
 {
     private int _numberOfBubbles;
     private CharacterController _player;
+    [SerializeField] private GameObject particles;
     
     private IEnumerator Start()
     {
@@ -30,6 +31,16 @@ public class LevelExit : MonoBehaviour
     private void OnBubbleMerged()
     {
         _numberOfBubbles--;
+        if(_numberOfBubbles <= 0)
+        {
+            LevelCompleted();
+        }
+    }
+
+    private void LevelCompleted()
+    {
+        // sound effect?
+        particles?.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
