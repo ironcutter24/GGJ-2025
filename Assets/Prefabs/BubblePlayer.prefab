@@ -123,6 +123,7 @@ MonoBehaviour:
   massIncrement: 0.2
   maxPushForce: 20
   pushRange: 5
+  pickupTriggerRadiusOffset: 0.25
   forceFalloff:
     serializedVersion: 2
     m_Curve:
@@ -152,6 +153,7 @@ MonoBehaviour:
     m_Bits: 256
   modelRootTrs: {fileID: 8535485785209048226}
   modelTrs: {fileID: 6424162745563052234}
+  pickupTrigger: {fileID: 1686849054763657054}
   blowEmitter: {fileID: 7614713538749401457}
 --- !u!50 &8437646154767950514
 Rigidbody2D:
@@ -445,7 +447,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.1
+  m_Radius: 0.5
 --- !u!1 &6451902827526103170
 GameObject:
   m_ObjectHideFlags: 0

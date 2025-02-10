@@ -2,28 +2,28 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Mathematics;
 using DG.Tweening;
+using UnityEngine.Serialization;
 
 public class CharacterController : Bubble
 {
-    [SerializeField] private float velocityPopThreshold = 7.5f;
-    [SerializeField] private float velocityBumpThreshold = 0.5f;
-    [SerializeField] private float radiusIncrement = 0.5f;
-    [SerializeField] private float massIncrement = 0.1f;
-    [SerializeField] private float maxPushForce = 10f;
-    [SerializeField] private float pushRange = 5f;
+    private Camera _mainCamera;
+    
+    [SerializeField, Min(0f)] private float velocityPopThreshold = 7.5f;
+    [SerializeField, Min(0f)] private float velocityBumpThreshold = 0.5f;
+    [SerializeField, Min(0f)] private float radiusIncrement = 0.5f;
+    [SerializeField, Min(0f)] private float massIncrement = 0.1f;
+    [SerializeField, Min(0f)] private float maxPushForce = 10f;
+    [SerializeField, Min(0f)] private float pushRange = 5f;
+    [SerializeField, Min(0f)] private float pickupTriggerRadiusOffset = .2f;
     [SerializeField] private AnimationCurve forceFalloff;
     [SerializeField] private LayerMask groundMask;
     [Space]
     [SerializeField] private Transform modelRootTrs;
     [SerializeField] private Transform modelTrs;
-
+    [SerializeField] private CircleCollider2D pickupTrigger;
     [SerializeField] private BlowEmitter blowEmitter;
-
     
-    private Camera _mainCamera;
-
     private float Radius => modelTrs.localScale.x * .5f;
-
 
     public event System.Action Merged;
     
@@ -31,10 +31,11 @@ public class CharacterController : Bubble
     protected override void Start()
     {
         base.Start();
-        _mainCamera = Camera.main;
         
+        _mainCamera = Camera.main;
         // var inputActions = InputManager.Actions;
         
+        pickupTrigger.radius = Radius - pickupTriggerRadiusOffset;
         blowEmitter.gameObject.SetActive(false);
     }
 
@@ -92,7 +93,9 @@ public class CharacterController : Bubble
 
     private void Grow()
     {
-        modelTrs.DOScale(modelTrs.localScale + radiusIncrement * Vector3.one, .4f).SetEase(Ease.OutBounce);
+        modelTrs.DOScale(modelTrs.localScale + radiusIncrement * Vector3.one, .4f)
+            .SetEase(Ease.OutBounce)
+            .OnComplete(() => pickupTrigger.radius = Radius - pickupTriggerRadiusOffset);
         Rb.mass += massIncrement;
         AudioManager.Instance.PlayBubbleMerge();
     }
